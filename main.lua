@@ -1,0 +1,2 @@
+-- name: OMM but silly
+-- description: Just a mod for me to learn and understand sm64ex coop modding. features for now (still adding more) : Rolling, Ground-pound Jump, Throw Your Cap, Mario Can Change Direction Mid-Air, Better Wing Cap, No Fall-damage.
