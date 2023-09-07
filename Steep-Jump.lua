@@ -1,25 +1,29 @@
 gGlobalSyncTable.SJ = true
 
-function mario_update(m)
-if gGlobalSyncTable.SJ then
-	if m.action == ACT_STEEP_JUMP then set_mario_action(m, ACT_JUMP, 0)
-		end
-	end
+function replace_action(m, action)
+if not gGlobalSyncTable.SJ then
+	if action == ACT_STEEP_JUMP then
+        if m.prevAction == ACT_JUMP then
+            return ACT_DOUBLE_JUMP
+        else
+            return ACT_JUMP
+        end
+    end
+end
 end
 
 function on_SJ_command(msg)
-    if msg == "on" then
-      gGlobalSyncTable.SJ = true
-      djui_chat_message_create("Steep Jump Remover On")
-      else
-          gGlobalSyncTable.SJ = false
-          djui_chat_message_create("Steep Jump Remover Off")
-      end
-      return true
-  end
+    gGlobalSyncTable.SJ = not gGlobalSyncTable.SJ
+    if gGlobalSyncTable.SJ then
+        djui_chat_message_create("Steep Jumps On")
+    else
+        djui_chat_message_create("Steep Jumps Off")
+    end
+    return true
+end
 
-hook_event(HOOK_MARIO_UPDATE, mario_update)
+hook_event(HOOK_BEFORE_SET_MARIO_ACTION, replace_action)
 
 if network_is_server() then
-    hook_chat_command("SJ", "[on|off] to turn Steep Jump Remover on or off", on_SJ_command)
+    hook_chat_command("SJ", "to turn Steep Jumps on or off", on_SJ_command)
 end

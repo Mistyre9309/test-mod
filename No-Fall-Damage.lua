@@ -7,18 +7,17 @@ function mario_update(m)
 end
 
 function on_fall_damage_command(msg)
-  if msg == "on" then
-    gGlobalSyncTable.fallDamage = true
+  gGlobalSyncTable.fallDamage = not gGlobalSyncTable.fallDamage
+  if gGlobalSyncTable.fallDamage then
     djui_chat_message_create("Fall Damage On")
-    else
-        gGlobalSyncTable.fallDamage = false
-        djui_chat_message_create("Fall Damage Off")
-    end
-    return true
+  else
+    djui_chat_message_create("Fall Damage Off")
+  end
+  return true
 end
 
 hook_event(HOOK_MARIO_UPDATE, mario_update)
 
 if network_is_server() then
-  hook_chat_command("falldamage", "[on|off] to turn falldamage on or off", on_fall_damage_command)
+  hook_chat_command("falldamage", "to turn fall damage on or off", on_fall_damage_command)
 end
