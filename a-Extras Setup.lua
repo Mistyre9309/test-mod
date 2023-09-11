@@ -1,5 +1,9 @@
-gMarioStateExtras = {}
+function limit_angle(a)
+    return (a + 0x8000) % 0x10000 - 0x8000
+end
 
+gMarioStateExtras = {}
+ANGLE_QUEUE_SIZE = 9
 for i=0,(MAX_PLAYERS-1) do
     gMarioStateExtras[i] = {}
     --local m = gMarioStates[i]
