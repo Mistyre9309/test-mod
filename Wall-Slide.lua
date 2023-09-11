@@ -1,9 +1,3 @@
-function limit_angle(a)
-    return (a + 0x8000) % 0x10000 - 0x8000
-end
-
-ACT_WALL_SLIDE = allocate_mario_action(ACT_GROUP_AIRBORNE | ACT_FLAG_AIR | ACT_FLAG_MOVING | ACT_FLAG_ALLOW_VERTICAL_WIND_ACTION)
-
 function act_wall_slide(m)
   if (m.input & INPUT_A_PRESSED) ~= 0 then
       m.vel.y = 52.0
@@ -52,7 +46,7 @@ function act_air_hit_wall(m)
       m.vel.y = 52.0
       m.faceAngle.y = limit_angle(m.faceAngle.y + 0x8000)
       return set_mario_action(m, ACT_WALL_KICK_AIR, 0)
-  elseif m.forwardVel >= 38.0 then
+  elseif m.forwardVel >= 100.0 then
       m.wallKickTimer = 5
       if m.vel.y > 0.0 then
           m.vel.y = 0.0

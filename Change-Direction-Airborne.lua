@@ -21,14 +21,11 @@ disallow = {}
 for _, value in ipairs(acts) do
   disallow[value] = true
 end
-
 function airturn(m)
-  if not gGlobalSyncTable.CDA then return end
-  if (m.action & ACT_FLAG_AIR) ~= 0 and (m.action & ACT_FLAG_SWIMMING_OR_FLYING) == 0 and not (disallow[m.action] or (m.action & ACT_GROUP_MASK) == ACT_GROUP_CUTSCENE) then
-    if (m.input & INPUT_NONZERO_ANALOG) then
-        intendedDYaw = m.intendedYaw - m.faceAngle.y
-        if (intendedDYaw > 32767) then intendedDYaw = intendedDYaw-65536 end
-        if (intendedDYaw < -32768) then intendedDYaw = intendedDYaw+65536 end
+  if not gGlobalSyncTable.CDA or not gNetworkPlayers[m.playerIndex].connected then return end
+  if (m.action & ACT_FLAG_AIR) ~= 0 and (m.action & ACT_FLAG_SWIMMING_OR_FLYING) == 0 then
+    if (m.input & INPUT_NONZERO_ANALOG) ~= 0 and not (disallow[m.action] or (m.action & ACT_GROUP_MASK) == ACT_GROUP_CUTSCENE) then
+        intendedDYaw = limit_angle(m.intendedYaw - m.faceAngle.y)
         intendedMag = m.intendedMag / 32.0;
 
         m.faceAngle.y = m.faceAngle.y + math.floor(512.0 * sins(intendedDYaw) * intendedMag*3)

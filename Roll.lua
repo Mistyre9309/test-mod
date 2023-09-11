@@ -1,10 +1,3 @@
-ACT_ROLL = allocate_mario_action(ACT_GROUP_MOVING | ACT_FLAG_MOVING | ACT_FLAG_BUTT_OR_STOMACH_SLIDE)
-ACT_ROLL_AIR = allocate_mario_action(ACT_GROUP_AIRBORNE | ACT_FLAG_AIR | ACT_FLAG_ALLOW_VERTICAL_WIND_ACTION)
-
-function limit_angle(a)
-    return (a + 0x8000) % 0x10000 - 0x8000
-end
-
 function update_roll_sliding_angle(m, accel, lossFactor)
     local floor = m.floor
     local slopeAngle = atan2s(floor.normal.z, floor.normal.x)
