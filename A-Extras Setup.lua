@@ -21,3 +21,31 @@ for i=0,(MAX_PLAYERS-1) do
 
     e.BWCMinVel = 0
 end
+
+local lp = gPlayerSyncTable[0]
+lp.sillymoves = {}
+
+function gpt(m, s)
+    return gPlayerSyncTable[m.playerIndex].sillymoves ~= nil and gPlayerSyncTable[m.playerIndex].sillymoves[s] or false
+end
+
+function flick(s)
+	lp.sillymoves[s] = not lp.sillymoves[s]
+end
+
+BWC = 1
+CT = 2
+AT = 3
+GPD = 4
+GPE = 5
+FD = 6
+ROLL = 8
+SJ = 8
+TWIRL = 9
+WS = 10
+RAD = 11
+
+for i=1, RAD do
+    gPlayerSyncTable[0].sillymoves[i] = true
+end
+flick(FD)

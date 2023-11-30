@@ -1,9 +1,7 @@
-gGlobalSyncTable.BWC = true
-
 ---@param m MarioState
 function mario_update(m)
     local e = gMarioStateExtras[m.playerIndex]
-    if ((m.flags & MARIO_WING_CAP) ~= 0) and m.action == ACT_FLYING and m.marioBodyState.capState ~= MARIO_HAS_DEFAULT_CAP_ON then
+    if ((m.flags & MARIO_WING_CAP) ~= 0) and m.action == ACT_FLYING and m.marioBodyState.capState ~= MARIO_HAS_DEFAULT_CAP_ON and gpt(m, BWC) then
         if (m.controller.buttonDown & B_BUTTON) ~= 0 then
             e.BWCMinVel = 10
             m.forwardVel = m.forwardVel * .90
@@ -38,18 +36,18 @@ function mario_update(m)
     end
 end
 
-function on_BWC_command(msg)
-    gGlobalSyncTable.BWC = not gGlobalSyncTable.BWC
-    if gGlobalSyncTable.BWC then
-    	djui_chat_message_create("BWC On")
-    else
-        djui_chat_message_create("BWC Off")
-    end
-    return true
-end
+-- function on_BWC_command(msg)
+--     gGlobalSyncTable.BWC = not gGlobalSyncTable.BWC
+--     if gGlobalSyncTable.BWC then
+--     	djui_chat_message_create("BWC On")
+--     else
+--         djui_chat_message_create("BWC Off")
+--     end
+--     return true
+-- end
 
 hook_event(HOOK_MARIO_UPDATE, mario_update)
 
-if network_is_server() then
-    hook_chat_command("BWC", "to turn better wing cap on or off", on_BWC_command)
-end
+-- if network_is_server() then
+--     hook_chat_command("BWC", "to turn better wing cap on or off", on_BWC_command)
+-- end

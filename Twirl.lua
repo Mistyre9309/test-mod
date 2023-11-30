@@ -277,7 +277,7 @@ function check_spin(m)
         m.action == ACT_WALL_KICK_AIR or
         m.action == ACT_DOUBLE_JUMP or
         m.action == ACT_BACKFLIP or
-        m.action == ACT_SIDE_FLIP) and e.spinInput ~= 0 then
+        m.action == ACT_SIDE_FLIP) and e.spinInput ~= 0 and gpt(m, TWIRL) then
         set_mario_action(m, ACT_SPIN_JUMP, 1)
         e.spinInput = 0
     end
@@ -285,7 +285,7 @@ end
 hook_event(HOOK_MARIO_UPDATE, check_spin)
 
 function check_action(m, action)
-    if gMarioStateExtras[m.playerIndex].spinInput ~= 0 and (m.input & INPUT_ABOVE_SLIDE) == 0 and (m.action == ACT_TURNING_AROUND and analog_stick_held_back(m) == 0) then
+    if gMarioStateExtras[m.playerIndex].spinInput ~= 0 and (m.input & INPUT_ABOVE_SLIDE) == 0 and (m.action == ACT_TURNING_AROUND and analog_stick_held_back(m) == 0) and gpt(m, TWIRL) then
         if action == ACT_JUMP or
            action == ACT_DOUBLE_JUMP or
            action == ACT_TRIPLE_JUMP or
