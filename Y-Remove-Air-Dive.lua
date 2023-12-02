@@ -22,18 +22,4 @@ dive_list = {
 	[ACT_GROUND_POUND_JUMP] = true,
 }
 
--- function on_RAD_command(msg)
--- 	gGlobalSyncTable.RAD = not gGlobalSyncTable.RAD
--- 	if gGlobalSyncTable.RAD then
--- 		djui_chat_message_create("RAD On")
--- 	else
--- 		djui_chat_message_create("RAD Off")
--- 	end
--- 	return true
--- end
-
 hook_event(HOOK_BEFORE_SET_MARIO_ACTION, remove_air_dive)
-
--- if network_is_server() then
--- 	hook_chat_command("RAD", "to turn Remove Air Dive on or off", on_RAD_command)
--- end

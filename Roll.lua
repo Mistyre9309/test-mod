@@ -249,19 +249,5 @@ end
 end
 
 hook_event(HOOK_BEFORE_MARIO_UPDATE,update_roll)
-hook_mario_action(ACT_ROLL,                      { every_frame = act_roll })
-hook_mario_action(ACT_ROLL_AIR,                  { every_frame = act_roll_air })
-
--- function on_roll_command()
--- 	gGlobalSyncTable.roll = not gGlobalSyncTable.roll
--- 	if gGlobalSyncTable.roll then
--- 		djui_chat_message_create("Rolling On")
--- 	else
--- 		djui_chat_message_create("Rolling Off")
--- 	end
--- 	return true
--- end
-
--- if network_is_server() then
--- 	hook_chat_command("roll", "to turn rolling on or off", on_roll_command)
--- end
+hook_mario_action(ACT_ROLL,     act_roll)
+hook_mario_action(ACT_ROLL_AIR, act_roll_air)

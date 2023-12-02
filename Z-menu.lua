@@ -17,9 +17,9 @@ local menuOptions = {
 	{ label = "Air Turn",				action = AT,	status = gpt(m, AT),		description = "Air turning" },
 	{ label = "Ground Pound Dive",		action = GPD,	status = gpt(m, GPD),		description = "Dive from a ground pound" },
 	{ label = "Ground Pound Extras",	action = GPE,	status = gpt(m, GPE),		description = "Give your ground pound more OOOF" },
-	{ label = "Fall Damage",			action = FD,	status = gpt(m, FD),		description = "OOOF" },
+	{ label = "No Fall Damage",			action = FD,	status = gpt(m, FD),		description = "OOOF" },
 	{ label = "Rolling",				action = ROLL,	status = gpt(m, ROLL),		description = "I roll" },
-	{ label = "Steep Jumps",			action = SJ,	status = gpt(m, SJ),		description = "Wah; Hoo; Woo; Hoo; *sliding*" },
+	{ label = "No Steep Jumps",			action = SJ,	status = gpt(m, SJ),		description = "Wah; Hoo; Woo; Hoo; *sliding*" },
 	{ label = "Twirl",					action = TWIRL,	status = gpt(m, TWIRL),		description = "Yippee!" },
 	{ label = "Wall Slide",				action = WS,	status = gpt(m, WS),		description = "Slide along walls" },
 	{ label = "No Air Dive",			action = RAD,	status = gpt(m, RAD),		description = "No Air Dive" },
@@ -46,7 +46,7 @@ local function drawMenu()
 	enable_time_stop_including_mario()
 
 	djui_hud_set_color(0, 0, 0, 200)
-	djui_hud_render_rect(0, 0, 10000, 10000)
+	djui_hud_render_rect(0, 0, w, h)
 
 	-- Set text color and position for the title
 	djui_hud_set_color(255, 255, 255, 255)

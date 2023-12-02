@@ -12,18 +12,4 @@ function mario_update(m)
 	end
 end
 
--- function on_GPD_command(msg)
--- 	gGlobalSyncTable.GPD = not gGlobalSyncTable.GPD
--- 	if gGlobalSyncTable.GPD then
--- 		djui_chat_message_create("GPD On")
--- 	else
--- 		djui_chat_message_create("GPD Off")
--- 	end
--- 	return true
--- end
-
 hook_event(HOOK_MARIO_UPDATE, mario_update)
-
--- if network_is_server() then
--- 	hook_chat_command("GPD", "to turn ground pound dive on or off", on_GPD_command)
--- end

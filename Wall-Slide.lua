@@ -72,4 +72,4 @@ function act_air_hit_wall(m)
 	end
 end
 
-hook_mario_action(ACT_AIR_HIT_WALL, { every_frame = act_air_hit_wall })
+hook_mario_action(ACT_AIR_HIT_WALL, act_air_hit_wall)

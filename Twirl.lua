@@ -300,6 +300,7 @@ function check_action(m, action)
 end
 hook_event(HOOK_BEFORE_SET_MARIO_ACTION, check_action)
 
-hook_mario_action(ACT_SPIN_JUMP,                 { every_frame = act_spin_jump, gravity = act_spin_jump_gravity })
-hook_mario_action(ACT_SPIN_POUND,                { every_frame = act_spin_pound })
-hook_mario_action(ACT_SPIN_POUND_LAND,           { every_frame = act_spin_pound_land })
+hook_mario_action(ACT_SPIN_JUMP,       { every_frame = act_spin_jump, gravity = act_spin_jump_gravity })
+
+hook_mario_action(ACT_SPIN_POUND,      act_spin_pound)
+hook_mario_action(ACT_SPIN_POUND_LAND, act_spin_pound_land)

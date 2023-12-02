@@ -203,16 +203,6 @@ function capthrow(m)
 	end
 end
 
--- function on_CapThrow_command(msg)
---   gGlobalSyncTable.CapThrow = not gGlobalSyncTable.CapThrow
---   if gGlobalSyncTable.CapThrow then
---     djui_chat_message_create("CapThrow On")
---   else
---     djui_chat_message_create("CapThrow Off")
---   end
---   return true
--- end
-
 hook_event(HOOK_MARIO_UPDATE, capthrow)
 hook_event(HOOK_ALLOW_INTERACT, function (m,o,type)
 	if (m.action & ACT_FLAG_THROWING ~= 0 or m.action == ACT_WATER_THROW) and obj_has_behavior_id(o.parentObj, id_bhvCapManager) and o.globalPlayerIndex == gNetworkPlayers[m.playerIndex].globalIndex then
@@ -220,7 +210,3 @@ hook_event(HOOK_ALLOW_INTERACT, function (m,o,type)
 		return false
 	end
 end)
-
--- if network_is_server() then
---   hook_chat_command("CapThrow", "to turn CapThrow on or off", on_CapThrow_command)
--- end

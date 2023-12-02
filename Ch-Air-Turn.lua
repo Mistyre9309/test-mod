@@ -31,18 +31,4 @@ function airturn(m)
 	end
 end
 
--- function on_CDA_command(msg)
--- 	gGlobalSyncTable.CDA = not gGlobalSyncTable.CDA
--- 	if gGlobalSyncTable.CDA then
--- 		djui_chat_message_create("CDA On")
--- 	else
--- 		djui_chat_message_create("CDA Off")
--- 	end
--- 	return true
--- end
-
 hook_event(HOOK_MARIO_UPDATE, airturn)
-
--- if network_is_server() then
--- 	hook_chat_command("CDA", "to make mario change direction airborne", on_CDA_command)
--- end

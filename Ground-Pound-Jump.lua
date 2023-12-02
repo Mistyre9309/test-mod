@@ -255,11 +255,11 @@ function act_water_ground_pound_jump(m)
 	return 0
 end
 
-hook_mario_action(ACT_GROUND_POUND_JUMP,         { every_frame = act_ground_pound_jump })
-hook_mario_action(ACT_WATER_GROUND_POUND,        { every_frame = act_water_ground_pound })
-hook_mario_action(ACT_WATER_GROUND_POUND_LAND,   { every_frame = act_water_ground_pound_land })
-hook_mario_action(ACT_WATER_GROUND_POUND_STROKE, { every_frame = act_water_ground_pound_stroke })
-hook_mario_action(ACT_WATER_GROUND_POUND_JUMP,   { every_frame = act_water_ground_pound_jump })
+hook_mario_action(ACT_GROUND_POUND_JUMP,         act_ground_pound_jump)
+hook_mario_action(ACT_WATER_GROUND_POUND,        act_water_ground_pound)
+hook_mario_action(ACT_WATER_GROUND_POUND_LAND,   act_water_ground_pound_land)
+hook_mario_action(ACT_WATER_GROUND_POUND_STROKE, act_water_ground_pound_stroke)
+hook_mario_action(ACT_WATER_GROUND_POUND_JUMP,   act_water_ground_pound_jump)
 
 hook_event(HOOK_MARIO_UPDATE, function (m)
 if gpt(m, GPE) then

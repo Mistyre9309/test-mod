@@ -39,7 +39,7 @@ AT = 3
 GPD = 4
 GPE = 5
 FD = 6
-ROLL = 8
+ROLL = 7
 SJ = 8
 TWIRL = 9
 WS = 10
@@ -48,4 +48,3 @@ RAD = 11
 for i=1, RAD do
     gPlayerSyncTable[0].sillymoves[i] = true
 end
-flick(FD)
