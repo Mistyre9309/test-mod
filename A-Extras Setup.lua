@@ -26,7 +26,7 @@ local lp = gPlayerSyncTable[0]
 lp.sillymoves = {}
 
 function gpt(m, s)
-    return gPlayerSyncTable[m.playerIndex].sillymoves ~= nil and gPlayerSyncTable[m.playerIndex].sillymoves[s] or false
+    return gPlayerSyncTable[m.playerIndex].sillymoves and gPlayerSyncTable[m.playerIndex].sillymoves[s] or false
 end
 
 function flick(s)
@@ -46,5 +46,5 @@ WS = 10
 RAD = 11
 
 for i=1, RAD do
-    gPlayerSyncTable[0].sillymoves[i] = true
+    lp.sillymoves[i] = true
 end

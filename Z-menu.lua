@@ -1,5 +1,4 @@
--- name: Menu Template
--- description: Menu Template for mods to use, made by Blocky
+-- menu template made by Blockyyy
 
 local menu = false
 
@@ -12,18 +11,19 @@ end
 local m = gMarioStates[0]
 -- Define menu options
 local menuOptions = {
-	{ label = "Better Wing Cap",		action = BWC,	status = gpt(m, BWC),		description = "Improved flight" },
-	{ label = "Cap Throw",				action = CT,	status = gpt(m, CT),		description = "Exchange power-ups!" },
-	{ label = "Air Turn",				action = AT,	status = gpt(m, AT),		description = "Air turning" },
-	{ label = "Ground Pound Dive",		action = GPD,	status = gpt(m, GPD),		description = "Dive from a ground pound" },
-	{ label = "Ground Pound Extras",	action = GPE,	status = gpt(m, GPE),		description = "Give your ground pound more OOOF" },
-	{ label = "No Fall Damage",			action = FD,	status = gpt(m, FD),		description = "OOOF" },
-	{ label = "Rolling",				action = ROLL,	status = gpt(m, ROLL),		description = "I roll" },
-	{ label = "No Steep Jumps",			action = SJ,	status = gpt(m, SJ),		description = "Wah; Hoo; Woo; Hoo; *sliding*" },
-	{ label = "Twirl",					action = TWIRL,	status = gpt(m, TWIRL),		description = "Yippee!" },
-	{ label = "Wall Slide",				action = WS,	status = gpt(m, WS),		description = "Slide along walls" },
-	{ label = "No Air Dive",			action = RAD,	status = gpt(m, RAD),		description = "No Air Dive" },
-	{ label = "Exit",					action = nil,	status = nil,				description = "Exit the menu." },
+	{ label = "Better Wing Cap",     id = BWC,   status = gpt(m, BWC),   description = "Improved flight" },
+	{ label = "Cap Throw",           id = CT,    status = gpt(m, CT),    description = "Exchange power-ups!" },
+	{ label = "Air Turn",            id = AT,    status = gpt(m, AT),    description = "Air turning" },
+	{ label = "Ground Pound Dive",   id = GPD,   status = gpt(m, GPD),   description = "Dive from a ground pound" },
+	{ label = "Ground Pound Extras", id = GPE,   status = gpt(m, GPE),   description = "Give your ground pound more OOOF" },
+	{ label = "No Fall Damage",      id = FD,    status = gpt(m, FD),    description = "OOOF" },
+	{ label = "Rolling",             id = ROLL,  status = gpt(m, ROLL),  description = "I roll" },
+	{ label = "No Steep Jumps",      id = SJ,    status = gpt(m, SJ),    description = "Wah; Hoo; Woo; Hoo; *sliding*" },
+	{ label = "Twirl",               id = TWIRL, status = gpt(m, TWIRL), description = "Yippee!" },
+	{ label = "Wall Slide",          id = WS,    status = gpt(m, WS),    description = "Slide along walls" },
+	{ label = "No Air Dive",         id = RAD,   status = gpt(m, RAD),   description = "No Air Dive" },
+
+	{ label = "Exit", description = "Exit the menu." },
 }
 
 -- Initialize the selected option
@@ -125,9 +125,9 @@ local function updateMenu()
 		play_sound(SOUND_MENU_CLICK_FILE_SELECT, gp)
 		local option = menuOptions[selectedOption]
 		-- Execute the selected menu option
-		if option.status ~= nil then
-			flick(option.action)
-			option.status = gpt(m, option.action)
+		if option.id then
+			flick(option.id)
+			option.status = gpt(m, option.id)
 		else close_menu() end
 	end
 

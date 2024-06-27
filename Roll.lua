@@ -1,4 +1,3 @@
-gPlayerSyncTable[0].roll = true
 function update_roll_sliding_angle(m, accel, lossFactor)
 	local floor = m.floor
 	local slopeAngle = atan2s(floor.normal.z, floor.normal.x)
@@ -248,6 +247,6 @@ if gpt(m, ROLL) then
 end
 end
 
-hook_event(HOOK_BEFORE_MARIO_UPDATE,update_roll)
+hook_event(HOOK_BEFORE_MARIO_UPDATE, update_roll)
 hook_mario_action(ACT_ROLL,     act_roll)
 hook_mario_action(ACT_ROLL_AIR, act_roll_air)

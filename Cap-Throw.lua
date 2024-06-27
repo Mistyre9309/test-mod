@@ -3,12 +3,13 @@ local METAL_CAP = (1 << 4)
 local VANISH_CAP = (1 << 5)
 
 local turn = {
-	[ACT_TURNING_AROUND] = true,
-	[ACT_FINISH_TURNING_AROUND] = true,
-	[ACT_SIDE_FLIP] = true,
-	[ACT_SIDE_FLIP_LAND] = true,
-	[ACT_SIDE_FLIP_LAND_STOP] = true,
+	[ACT_TURNING_AROUND] = 1,
+	[ACT_FINISH_TURNING_AROUND] = 1,
+	[ACT_SIDE_FLIP] = 1,
+	[ACT_SIDE_FLIP_LAND] = 1,
+	[ACT_SIDE_FLIP_LAND_STOP] = 1
 }
+
 ---@param o Object
 function capinit(o)
 	print("Cap Manager v1.14")
@@ -39,7 +40,7 @@ function caploop(o)
 	end
 	if obj.activeFlags == ACTIVE_FLAG_DEACTIVATED then
 		print("my cap was collected, let's see...")
-		local m = nearest_mario_state_to_object(obj)
+		m = nearest_mario_state_to_object(obj)
 		if obj.oTimer < 0 then
 			if o.oBehParams & WING_CAP ~= 0 then
 				m.flags = m.flags | MARIO_WING_CAP
@@ -105,7 +106,7 @@ function caploop(o)
 		if hurt ~= nil then
 			if hurt ~= m.marioObj then
 				print(get_behavior_name_from_id(get_id_from_behavior(hurt.behavior)))
-				hurt.oInteractStatus = ATTACK_FROM_ABOVE | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED
+				hurt.oInteractStatus = INT_KICK | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED
 			end
 		end
 		spawn_non_sync_object(id_bhvSparkleSpawn, E_MODEL_NONE, obj.oPosX, obj.oPosY, obj.oPosZ, nil)

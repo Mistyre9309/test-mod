@@ -1,3 +1,4 @@
+-- ground pound dive from Extended Moveset
 function mario_update(m)
 	if gpt(m, GPD) then
 		if m.action == ACT_GROUND_POUND and (m.input & INPUT_B_PRESSED) ~= 0 then

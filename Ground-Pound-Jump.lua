@@ -1,3 +1,4 @@
+-- ground pound jump from Extended Moveset
 function act_ground_pound_jump(m)
 	local e = gMarioStateExtras[m.playerIndex]
 	if check_kick_or_dive_in_air(m) ~= 0 then

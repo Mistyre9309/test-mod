@@ -1,3 +1,13 @@
+local dive_list = {
+	[ACT_JUMP] = 1,
+	[ACT_DOUBLE_JUMP] = 1,
+	[ACT_TRIPLE_JUMP] = 1,
+	[ACT_SIDE_FLIP] = 1,
+	[ACT_WALL_KICK_AIR] = 1,
+	[ACT_SPIN_JUMP] = 1,
+	[ACT_GROUND_POUND_JUMP] = 1,
+}
+
 function remove_air_dive(m, action)
 	if gpt(m, RAD) then
 		if dive_list[m.action] and action == ACT_DIVE then
@@ -11,15 +21,5 @@ function remove_air_dive(m, action)
 		end
 	end
 end
-
-dive_list = {
-	[ACT_JUMP] = true,
-	[ACT_DOUBLE_JUMP] = true,
-	[ACT_TRIPLE_JUMP] = true,
-	[ACT_SIDE_FLIP] = true,
-	[ACT_WALL_KICK_AIR] = true,
-	[ACT_SPIN_JUMP] = true,
-	[ACT_GROUND_POUND_JUMP] = true,
-}
 
 hook_event(HOOK_BEFORE_SET_MARIO_ACTION, remove_air_dive)

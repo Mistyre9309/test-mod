@@ -1,3 +1,5 @@
+-- wall slide from Extended Moveset
+
 function act_wall_slide(m)
 	if (m.input & INPUT_A_PRESSED) ~= 0 then
 		m.vel.y = 52.0
